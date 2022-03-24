@@ -1,0 +1,118 @@
+//
+// Created by yoran on 2022/3/24.
+//
+
+#include<iostream>
+#include "function.h"
+
+typedef char ElemType;
+
+
+//递归前序遍历
+void PreOrder(BiTree P)
+{
+    if (P != NULL)
+    {
+        putchar(P->data);
+        PreOrder(P->lchild);
+        PreOrder(P->rchild);
+    }
+}
+
+//递归中序遍历
+void InOrder(BiTree P)
+{
+    if (P != NULL)
+    {
+        InOrder(P->lchild);
+        putchar(P->data);
+        InOrder(P->rchild);
+    }
+}
+
+//递归后序遍历
+void PostOrder(BiTree P)
+{
+    if (P != NULL)
+    {
+        PostOrder(P->lchild);
+        PostOrder(P->rchild);
+        putchar(P->data);
+    }
+}
+
+//层序（层次）遍历非递归
+void LevelOrder(BiTree P)
+{
+    LinkQueue Q;
+    InitQueue(Q);
+    EnQueue(Q, P);
+    ElemType e;
+    while (!isEmpty(Q))
+    {
+        DeQueue(Q, P);
+        putchar(P->data);
+        if (P->lchild != NULL)
+        {
+            EnQueue(Q, P->lchild);
+        }
+        if (P->rchild != NULL)
+        {
+            EnQueue(Q, P->rchild);
+        }
+    }
+
+}
+int main()
+{
+    BiTree pnew;
+    //LinkQueue p;
+    //InitQueue(p);
+    ElemType c;
+    BiTree tree=NULL; //树根
+    ptag_t phead = NULL, ptail = NULL, listpnew, pcur;//phead是队列头，ptail是队列尾
+    pcur = phead;
+    while (scanf("%c", &c) != EOF)
+    {
+        if ('\n' == c)
+        {
+            break;
+        }
+        pnew = (BiTree)calloc(1, sizeof(BiTNode));
+        pnew->data = c;
+        listpnew = (ptag_t)calloc(1, sizeof(tag_t));
+        listpnew->p = pnew;
+        if (tree == NULL)
+        {
+            tree = pnew;
+            phead = listpnew;
+            ptail = listpnew;
+            pcur = listpnew;
+            continue;
+        }else{
+            ptail->pnext = listpnew;
+            ptail = listpnew;
+            if (NULL == pcur->p->lchild)
+            {
+                pcur->p->lchild = pnew;
+            }
+            else if(NULL==pcur->p->rchild) {
+                pcur->p->rchild = pnew;
+                pcur = pcur->pnext;
+            }
+        }
+    }
+    printf("-------------------前序遍历结果--------------------------\n");
+    PreOrder(tree);
+    printf("\n");
+    printf("-------------------中序遍历结果--------------------------\n");
+    InOrder(tree);
+    printf("\n");
+    printf("-------------------后序遍历结果--------------------------\n");
+    PostOrder(tree);
+    printf("\n");
+    printf("-------------------层序遍历结果--------------------------\n");
+    LevelOrder(tree);
+    printf("\n");
+}
+
