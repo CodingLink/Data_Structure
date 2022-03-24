@@ -70,7 +70,7 @@ int main()
     //InitQueue(p);
     ElemType c;
     BiTree tree=NULL; //树根
-    ptag_t phead = NULL, ptail = NULL, listpnew, pcur;//phead是队列头，ptail是队列尾
+    ptag_t phead = NULL, ptail = NULL, listpnew, pcur;//phead是队列头，ptail是队列尾，listnew是用来临时存放队列结点
     pcur = phead;
     while (scanf("%c", &c) != EOF)
     {
@@ -85,12 +85,12 @@ int main()
         if (tree == NULL)
         {
             tree = pnew;
-            phead = listpnew;
-            ptail = listpnew;
+            phead = listpnew;//队列头
+            ptail = listpnew;//队列尾
             pcur = listpnew;
             continue;
         }else{
-            ptail->pnext = listpnew;
+            ptail->pnext = listpnew;//新结点通过尾插法插入
             ptail = listpnew;
             if (NULL == pcur->p->lchild)
             {
