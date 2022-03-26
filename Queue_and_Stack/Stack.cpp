@@ -5,22 +5,22 @@
 #include<iostream>
 #define MaxSize 50
 typedef int ElemType;
-
+// 定义栈的结构
 typedef struct {
-    ElemType data[MaxSize];
-    int top;
+    ElemType data[MaxSize];// 数据域
+    int top;// 栈顶指针
 }SqStack;
 
 //初始化栈
 void InitStack(SqStack& S)
 {
-    S.top = -1;
+    S.top = -1;//栈顶指针初始化为-1
 }
 
 //判断栈空
 bool StackEmpty(SqStack S)
 {
-    if (S.top = -1)
+    if (-1==S.top)//栈空
     {
         return true;
     }
@@ -30,7 +30,7 @@ bool StackEmpty(SqStack S)
 //进栈
 bool Push(SqStack& S, ElemType e)
 {
-    if (S.top == MaxSize - 1)
+    if (S.top == MaxSize - 1)//栈满
     {
         return false;
     }
@@ -41,6 +41,7 @@ bool Push(SqStack& S, ElemType e)
 //出栈
 bool Pop(SqStack& S, ElemType& e)
 {
+    //栈空
     if (S.top == -1)
     {
         return false;

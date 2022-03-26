@@ -10,8 +10,8 @@
 typedef int ElemType;
 
 typedef struct {
-    ElemType data[MaxSize];
-    int front, rear;
+    ElemType data[MaxSize];//顺序存储结构
+    int front, rear;//队头队尾指针
 }SqQueue;
 
 //初始化队列

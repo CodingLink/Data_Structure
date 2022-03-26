@@ -24,11 +24,14 @@ bool QueueEmpty(SqQueue Q)
 //入队
 bool EnQueue(SqQueue& Q,ElemType e)
 {
+    //队满
     if ((Q.rear+1)%MaxSize == Q.front)
     {
         return false;
     }
+    //入队
     Q.data[Q.rear] = e;
+    //更新队尾
     Q.rear = (Q.rear + 1) % MaxSize;
     return true;
 }
@@ -36,11 +39,14 @@ bool EnQueue(SqQueue& Q,ElemType e)
 //出队
 bool DeQueue(SqQueue& Q, ElemType& e)
 {
+    //队空
     if (QueueEmpty(Q))
     {
         return false;
     }
+    //队首元素
     e = Q.data[Q.front];
+    //更新队头
     Q.front = (Q.front + 1) % MaxSize;
     return true;
 }

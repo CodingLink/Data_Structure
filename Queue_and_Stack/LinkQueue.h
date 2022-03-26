@@ -7,14 +7,14 @@
 
 
 typedef int ElemType;
-
+//链式队列
 typedef struct LinkNode {
-    ElemType data;
-    struct LinkNode* next;
+    ElemType data;//数据域
+    struct LinkNode* next;//指针域
 }LinkNode;
 
 typedef struct {
-    LinkNode* front, * rear;
+    LinkNode* front, * rear;//队头和队尾指针
 }LinkQueue;
 
 //初始化链队

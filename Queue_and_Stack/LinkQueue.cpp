@@ -23,19 +23,19 @@ bool isEmpty(LinkQueue Q)
     return false;
 }
 
-//入队
+//入队,队尾插入法
 bool EnQueue(LinkQueue& Q, ElemType e)
 {
     LinkNode* s;
     s = (LinkNode*)calloc(1, sizeof(LinkNode));
-    s->data = e;
-    s->next = NULL;
-    Q.rear->next = s;
-    Q.rear = s;
+    s->data = e;//插入数据
+    s->next = NULL;//插入的是队尾
+    Q.rear->next = s;//队尾指针指向新节点
+    Q.rear = s;//队尾指针后移
     return true;
 }
 
-//出队
+//出队，队首删除法
 bool DeQueue(LinkQueue& Q, ElemType& e)
 {
     if (isEmpty(Q))
@@ -46,6 +46,7 @@ bool DeQueue(LinkQueue& Q, ElemType& e)
     p = Q.front->next;
     e = p->data;
     Q.front->next = p->next;
+    //如果队列只有一个元素，那么队尾指针也要指向NULL
     if (Q.rear == p)
     {
         Q.rear = Q.front;
