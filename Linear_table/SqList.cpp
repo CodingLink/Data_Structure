@@ -1,8 +1,14 @@
 //
 // Created by yoran on 2022/3/24.
-//
+//顺序表
 
-#include "SqList.h"
+#include <iostream>
+#define MaxSize 50
+typedef int ElemType;
+typedef struct {
+    ElemType data[MaxSize];
+    int length;
+}SqList;
 
 bool InitList(SqList& L)
 {
@@ -53,6 +59,16 @@ bool ListDelete(SqList& L, int i, ElemType& e) {
     }
     L.length--;
     return true;
+}
+
+//打印顺序表元素
+void PrintList(SqList& L)
+{
+    for (int i = 0; i < L.length; i++)
+    {
+        printf("%3d", L.data[i]);//要求所有元素打印到一排
+    }
+    printf("\n");
 }
 
 //int main() {

@@ -25,7 +25,12 @@ DLinkList DList_HeadInsert(DLinkList& L)
         s = (DNode*)malloc(sizeof(DNode));
         s->data = x;
         s->next = L->next;
-        s->prior = L->prior;
+        //TODO
+        if(L->next->next!=NULL)
+        {
+            L->next->prior=s;
+        }
+        s->prior = L;
         L->next = s;
         scanf("%d", &x);
     }
@@ -49,25 +54,41 @@ DLinkList DList_TailInsert(DLinkList& L)
         r = s;
         scanf("%d", &x);
     }
+    //TODO
+    r->next=NULL;
     return L;
 }
 
+//根据序号查找结点
+DNode *GetElem(DLinkList L,int i)
+{
+    int j=1;
+    DNode* p=L->next;
+    if(0==i)
+    {
+        return L;
+    }
+    if(i<0)
+    {
+        return NULL;
+    }
+    while(p&&j<i)
+    {
+        p=p->next;
+        j++;
+    }
+    return p;
+}
 //双链表插入结点
 bool DList_Insert(DLinkList& L, int i,ElemType e)
 {
-    if (i < 1)
+    DNode* p = GetElem(L,i-1);
+    if(NULL==p)
     {
         return false;
     }
     DNode* s = (DNode*)malloc(sizeof(DNode));
     s->data = e;
-    int j = 0;
-    DNode* p = L;
-    while (j < i-1&&p->next)
-    {
-        p = p->next;
-        j++;
-    }
     s->next = p->next;
     p->next->prior = s;
     s->prior = p;
@@ -77,42 +98,46 @@ bool DList_Insert(DLinkList& L, int i,ElemType e)
 //删除结点
 bool DList_delete(DLinkList& L, int i, ElemType& e)
 {
-    if (0 == i)
+    DNode* p = GetElem(L,i-1);
+    if(NULL==p)
     {
-        return L;
+        return false;
     }
-    if (i < 1)
+    DLinkList q=p->next;
+    if(NULL==q)
     {
-        return NULL;
+        return false;
     }
-    int j = 0;
-    DNode* p = L;
-    while (j < i - 1 && p)
+    p->next=q->next;
+    if(q->next!=NULL)
     {
-        p = p->next;
-        j++;
+        q->next->prior=p;
     }
-    if (p->next->next==NULL)
-    {
-        e = p->next->data;
-        DNode* q = p->next;
-        p->next = NULL;
-        free(q);
-        return true;
-    }
-    e = p->next->data;
-    DNode* q = p->next;
-    q->next->prior = p;
-    p->next = q->next;
     free(q);
     return true;
 }
 
-//int main()
-//{
-//    ElemType e;
-//    DLinkList L;
-//    DList_TailInsert(L);
-//    DList_Insert(L, 3, 100);
-//    DList_delete(L, 2, e);
-//}
+//链表打印
+void PrintDList(DLinkList L)
+{
+    L=L->next;
+    while(L!=NULL)
+    {
+        printf("%3d",L->data);
+        L=L->next;
+    }
+    printf("\n");
+}
+
+int main()
+{
+    ElemType e;
+    DLinkList L;
+    DList_TailInsert(L);
+    PrintDList(L);
+    DList_Insert(L, 3, 10);
+    PrintDList(L);
+    DList_delete(L, 5, e);
+    PrintDList(L);
+    return 0;
+}

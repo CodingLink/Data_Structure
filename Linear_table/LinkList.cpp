@@ -1,6 +1,6 @@
 //
 // Created by yoran on 2022/3/24.
-//
+//链表
 
 #include<iostream>
 typedef int ElemType;
@@ -17,13 +17,13 @@ LinkList Link_HeadInsert(LinkList& L) {
     int x;
     L = (LinkList)malloc(sizeof(LNode));
     L->next = NULL;
-    scanf_s("%d", &x);
+    scanf ("%d", &x);
     while (x != 9999) {
         s = (LNode*)malloc(sizeof(LNode));
         s->data = x;
         s->next = L->next;
         L->next = s;
-        scanf_s("%d", &x);
+        scanf("%d", &x);
     }
     return L;
 }
@@ -80,14 +80,14 @@ LNode* LocateElem(LinkList L, ElemType e)
 //插入结点
 bool ListInsert(LinkList& L, int i, ElemType e)
 {
-    if (i < 1)
+    LNode* p = GetElem(L, i - 1);
+    if (NULL==p)
     {
         return false;
     }
     LNode* s;
     s = (LNode*)malloc(sizeof(LNode));
     s->data = e;
-    LNode* p = GetElem(L, i - 1);
     s->next = p->next;
     p->next = s;
     return true;
@@ -96,13 +96,19 @@ bool ListInsert(LinkList& L, int i, ElemType e)
 //删除结点
 bool ListDelete(LinkList& L, int i, ElemType& e)
 {
-    if (i < 1)
+    LNode* p = GetElem(L, i-1);
+    if (NULL==p)
     {
         return false;
     }
-    LNode* p = GetElem(L, i-1);
-    e = p->next->data;
-    p->next = p->next->next;
+    LinkList q=p->next;
+    if(NULL==q)
+    {
+        return false;
+    }
+    e = q->data;
+    p->next = q->next;
+    free(q);
     return true;
 }
 
@@ -119,5 +125,29 @@ int Length(LinkList L)
     }
     return i;
 }
+
+//打印链表的值
+void PrintList(LinkList L)
+{
+    L=L->next;
+    while (L!=NULL)
+    {
+        printf("%3d",L->data);
+        L=L->next;
+    }
+    printf("\n");
+}
+
+//int main()
+//{
+//    ElemType e;
+//    LinkList L;
+//    Link_TailInsert(L);
+//    ListInsert(L,3,3);
+//    printList(L);
+//    ListDelete(L,1,e);
+//    PrintList(L);
+//    return 0;
+//}
 
 
