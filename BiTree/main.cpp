@@ -63,49 +63,49 @@ void LevelOrder(BiTree T)
     }
 
 }
-int main()
-{
-    BiTree pnew;
-    ElemType c;
-    BiTree tree=NULL; //树根
-    ptag_t phead = NULL, ptail = NULL, listpnew, pcur;//phead是队列头，ptail是队列尾，listnew是用来临时存放队列结点
-    pcur = phead;
-    while (scanf("%c", &c) != EOF) {
-        if ('\n' == c) {
-            break;
-        }
-        pnew = (BiTree) calloc(1, sizeof(BiTNode));
-        pnew->data = c;
-        listpnew = (ptag_t) calloc(1, sizeof(tag_t));
-        listpnew->p = pnew;
-        if (tree == NULL) {
-            tree = pnew;
-            phead = listpnew;//队列头
-            ptail = listpnew;//队列尾
-            pcur = listpnew;
-            continue;
-        } else {
-            ptail->pnext = listpnew;//新结点通过尾插法插入
-            ptail = listpnew;
-            if (NULL == pcur->p->lchild) {
-                pcur->p->lchild = pnew;
-            } else if (NULL == pcur->p->rchild) {
-                pcur->p->rchild = pnew;
-                pcur = pcur->pnext;
-            }
-        }
-    }
-    printf("-------------------前序遍历结果--------------------------\n");
-    PreOrder(tree);
-    printf("\n");
-    printf("-------------------中序遍历结果--------------------------\n");
-    InOrder(tree);
-    printf("\n");
-    printf("-------------------后序遍历结果--------------------------\n");
-    PostOrder(tree);
-    printf("\n");
-    printf("-------------------层序遍历结果--------------------------\n");
-    LevelOrder(tree);
-    printf("\n");
-}
+//int main()
+//{
+//    BiTree pnew;
+//    ElemType c;
+//    BiTree tree=NULL; //树根
+//    ptag_t phead = NULL, ptail = NULL, listpnew, pcur;//phead是队列头，ptail是队列尾，listnew是用来临时存放队列结点
+//    pcur = phead;
+//    while (scanf("%c", &c) != EOF) {
+//        if ('\n' == c) {
+//            break;
+//        }
+//        pnew = (BiTree) calloc(1, sizeof(BiTNode));
+//        pnew->data = c;
+//        listpnew = (ptag_t) calloc(1, sizeof(tag_t));
+//        listpnew->p = pnew;
+//        if (tree == NULL) {
+//            tree = pnew;
+//            phead = listpnew;//队列头
+//            ptail = listpnew;//队列尾
+//            pcur = listpnew;
+//            continue;
+//        } else {
+//            ptail->pnext = listpnew;//新结点通过尾插法插入
+//            ptail = listpnew;
+//            if (NULL == pcur->p->lchild) {
+//                pcur->p->lchild = pnew;
+//            } else if (NULL == pcur->p->rchild) {
+//                pcur->p->rchild = pnew;
+//                pcur = pcur->pnext;
+//            }
+//        }
+//    }
+//    printf("-------------------前序遍历结果--------------------------\n");
+//    PreOrder(tree);
+//    printf("\n");
+//    printf("-------------------中序遍历结果--------------------------\n");
+//    InOrder(tree);
+//    printf("\n");
+//    printf("-------------------后序遍历结果--------------------------\n");
+//    PostOrder(tree);
+//    printf("\n");
+//    printf("-------------------层序遍历结果--------------------------\n");
+//    LevelOrder(tree);
+//    printf("\n");
+//}
 
