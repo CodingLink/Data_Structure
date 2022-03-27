@@ -128,16 +128,16 @@ void PrintDList(DLinkList L)
     }
     printf("\n");
 }
-
-int main()
-{
-    ElemType e;
-    DLinkList L;
-    DList_TailInsert(L);
-    PrintDList(L);
-    DList_Insert(L, 3, 10);
-    PrintDList(L);
-    DList_delete(L, 5, e);
-    PrintDList(L);
-    return 0;
-}
+//
+//int main()
+//{
+//    ElemType e;
+//    DLinkList L;
+//    DList_TailInsert(L);
+//    PrintDList(L);
+//    DList_Insert(L, 3, 10);
+//    PrintDList(L);
+//    DList_delete(L, 5, e);
+//    PrintDList(L);
+//    return 0;
+//}

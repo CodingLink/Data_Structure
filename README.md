@@ -8,8 +8,12 @@
 3.2 [循环队列](./Queue_and_Stack/SqQueue.cpp)  
 3.3 [链队](./Queue_and_Stack/LinkQueue.cpp)  
 ## 第五章 二叉树
-5.1 [二叉树](./BiTree/main.cpp)
+5.1 [二叉树](./BiTree/main.cpp)  
+## 第七章 查找与排序
+### 7.3 树型查找  
+7.3.1 二叉查找树（二叉排序树）BST  
+7.3.2 平衡二叉树
 
---
+---
 参考书目：
 1. 《王道2023数据结构考研复习指导》
