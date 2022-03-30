@@ -131,16 +131,16 @@ void DeleteNode(BiTree &T,KeyType k)
         }
     }
 }
-int main()
-{
-    BiTree T,p=NULL;
-    KeyType str[]={54,20,66,40,28,79,58};
-    CreateBST(T,str,7);
-    InOrder(T);
-    BiTree t1=BST_Search(T,28,p);
-    BiTree t2= BST_Search2(T,28);
-    DeleteNode(T,54);
-    printf("\n");
-    InOrder(T);
-    return 0;
-}
+//int main()
+//{
+//    BiTree T,p=NULL;
+//    KeyType str[]={54,20,66,40,28,79,58};
+//    CreateBST(T,str,7);
+//    InOrder(T);
+//    BiTree t1=BST_Search(T,28,p);
+//    BiTree t2= BST_Search2(T,28);
+//    DeleteNode(T,54);
+//    printf("\n");
+//    InOrder(T);
+//    return 0;
+//}
