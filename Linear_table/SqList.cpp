@@ -39,7 +39,11 @@ bool ListInsert(SqList& L, int i, ElemType e)
     {
         return false;
     }
-    for (int j = L.length; j >= i - 1; j--) {
+    if (L.length >= MaxSize)//元素存储满了，不能再存了
+    {
+        return false;
+    }
+    for (int j = L.length; j >= i; j--) {
         L.data[j] = L.data[j - 1];
     }
     L.data[i - 1] = e;
