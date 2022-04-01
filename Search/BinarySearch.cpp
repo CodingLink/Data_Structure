@@ -67,17 +67,17 @@ int BinarySearch(SSTable ST,ElemType e)
     return -1;
 }
 
-int main()
-{
-    SSTable ST;
-    ST_Init(ST,10);
-    qsort(ST.data,ST.TableLen,sizeof(ElemType),compare);
-    ST_Print(ST);
-    ElemType e;
-    scanf("%d",&e);
-//    printf("%d\n",Seq_Search(ST,e)); //顺序查找
-    printf("%d\n",BinarySearch(ST,e));
-    //ST_Print(ST);
-
-    return 0;
-}
+//int main()
+//{
+//    SSTable ST;
+//    ST_Init(ST,10);
+//    qsort(ST.data,ST.TableLen,sizeof(ElemType),compare);
+//    ST_Print(ST);
+//    ElemType e;
+//    scanf("%d",&e);
+////    printf("%d\n",Seq_Search(ST,e)); //顺序查找
+//    printf("%d\n",BinarySearch(ST,e));
+//    //ST_Print(ST);
+//
+//    return 0;
+//}
