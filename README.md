@@ -10,6 +10,7 @@
 ## 第五章 二叉树
 5.1 [二叉树](./BiTree/main.cpp)  
 ## 第七章 查找
+7.2 [二分查找和快速查找](./Search/BinarySearch.cpp)  
 ### 7.3 树型查找  
 7.3.1 [二叉查找树（二叉排序树）BST](./BiTree/BST.cpp)  
 ## 第八章 排序  
