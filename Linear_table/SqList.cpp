@@ -51,18 +51,23 @@ bool ListInsert(SqList& L, int i, ElemType e)
     return true;
 }
 
-bool ListDelete(SqList& L, int i, ElemType& e) {
-    if (i<1 || i>L.length + 1)
+//删除元素
+bool ListDelete(SqList &L,int i,ElemType &e)
+{
+    if(i<1||i>L.len)
     {
         return false;
     }
-    e = L.data[i - 1];
-    for (int j = i - 1; j < L.length - 1; j++)
+    if(L.len==0)
     {
-        L.data[j] = L.data[j + 1];
+        return false;
     }
-    L.length--;
-    return true;
+    e=L.data[i-1];
+    for(int j=i;j<L.len;j++)
+    {
+        L.data[j-1]=L.data[j];
+    }
+    L.len--;
 }
 
 //打印顺序表元素
