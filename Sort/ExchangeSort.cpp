@@ -66,16 +66,43 @@ void BubbleSort(ElemType A[],int n)
     }
 }
 
-int main()
+
+//快速排序
+int Partition(int *arr,int left,int right)
 {
-    ElemType A[10]={ 64, 94, 95, 79, 69, 84, 18, 22, 12 ,78};
-    SSTable ST;
-    ST_Init(ST,10);
-    printList(ST);
-//    memcpy(ST.elem,A,sizeof(A));
-    BubbleSort(ST.elem,10);
-    printList(ST);
-    return 0;
+    int k,i;//k记录最左端的值
+    for(k=left,i=left;i<right;i++)
+    {
+        if(arr[i]<arr[right]) {
+            Swap(arr[i], arr[k]);
+            k++;
+        }
+    }
+    Swap(arr[k],arr[right]);
+    return k;
 }
+
+void QuickSort(ElemType A[],int low,int high)
+{
+    if(low<high)
+    {
+        int p= Partition(A,low,high);
+        QuickSort(A,low,p-1);
+        QuickSort(A,p+1,high);
+    }
+}
+
+//int main()
+//{
+//    ElemType A[10]={ 64, 94, 95, 79, 69, 84, 18, 22, 12 ,78};
+//    SSTable ST;
+//    ST_Init(ST,10);
+//    printList(ST);
+////    memcpy(ST.elem,A,sizeof(A));
+////    BubbleSort(ST.elem,10);
+//    QuickSort(ST.elem,0,9);
+//    printList(ST);
+//    return 0;
+//}
 
 
